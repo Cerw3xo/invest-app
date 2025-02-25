@@ -1,0 +1,26 @@
+.div {
+  padding: 1rem;
+}
+.div h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+.div table {
+  height: 100%;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.div table thead tr {
+  display: table-row;
+  border-bottom: 1px solid #1c365d;
+}
+.div table thead tr th {
+  padding: 0.7rem 0;
+  color: #1c365d;
+  font-size: 0.9rem;
+}
+.div table tbody td {
+  padding: 0.5rem 0;
+  font-weight: 500;
+}/*# sourceMappingURL=InvestmentTable.module.css.map */

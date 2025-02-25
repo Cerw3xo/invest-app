@@ -1,0 +1,43 @@
+@use "../../variables.scss" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  display: flex;
+  background-color: $component;
+  margin-bottom: 1rem;
+  gap: 0.7rem;
+  border-radius: $radius;
+  width: 100%;
+
+  > h2 {
+    color: $text;
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+
+    input {
+      all: unset;
+      color: white;
+      border: none;
+      background-color: $color1;
+      border-bottom: 1px solid $text;
+      padding: 0.3rem;
+
+      &:focus {
+        border: none;
+      }
+    }
+  }
+  button {
+    all: unset;
+    background: $color-bg;
+    padding: 0.3rem 1rem;
+    border-radius: $radius;
+    cursor: pointer;
+  }
+}

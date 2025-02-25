@@ -1,0 +1,13 @@
+.total {
+  padding: 1rem;
+  text-align: center;
+}
+.total h1 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+.total p {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: #1c365d;
+}/*# sourceMappingURL=InvestmentSummary.module.css.map */
