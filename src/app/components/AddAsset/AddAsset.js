@@ -1,38 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./AddAsset.module.scss"
 
-export default function AddAsset({ onAssetAdded }) {
+export default function AddAsset({ onAssetAdded, isEditing, selectedAsset, onCancel }) {
+
     const [assetName, setAssetName] = useState("");
     const [assetAmount, setAssetAmount] = useState(0);
     const [assetPrice, setAssetPrice] = useState(0);
 
+    useEffect(() => {
+        if (isEditing && selectedAsset) {
+            setAssetName(selectedAsset.name);
+            setAssetAmount(selectedAsset.amount);
+            setAssetPrice(selectedAsset.unitPrice);
+        } else {
+            setAssetName("");
+            setAssetAmount(0);
+            setAssetPrice(0);
+        }
+    }, [isEditing, selectedAsset])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newAsset = {
+        const assetData = {
             name: assetName,
             amount: assetAmount,
-            unitPrice: assetPrice
+            unitPrice: assetPrice,
         }
 
         try {
-            const response = await fetch('/api/assets', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newAsset)
-            });
+            let response;
+            if (isEditing) {
+                response = await fetch("/api/assets", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id: selectedAsset.id, ...assetData }),
+                });
+            } else {
+                response = await fetch("/api/assets", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(assetData),
+                });
+            }
 
             if (!response.ok) {
-                throw new Error("Chyba pri nacitani dat");
+                throw new Error("Error for loading data")
             }
 
             const data = await response.json()
-            console.log(data)
-            onAssetAdded(data)
 
             setAssetName("");
             setAssetAmount(0);
             setAssetPrice(0);
+
+            onAssetAdded(data)
         } catch (error) {
             console.log(error)
         }
@@ -41,7 +63,7 @@ export default function AddAsset({ onAssetAdded }) {
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2>Add New Asset</h2>
+            <h2>{isEditing ? "Edit Asset" : "New Asset"}</h2>
 
             <div className={styles.formContainer}>
                 <input
@@ -63,7 +85,11 @@ export default function AddAsset({ onAssetAdded }) {
 
 
             </div>
-            <button type="submit">Add</button>
+            <button type="submit">{isEditing ? "Save" : "Add"}</button>
+
+            {isEditing && (
+                <button type="button" onClick={onCancel}>cancel</button>
+            )}
         </form>
     )
 

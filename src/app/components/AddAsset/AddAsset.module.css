@@ -1,10 +1,11 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: start;
   padding: 1rem;
   display: flex;
   background-color: #0b1739;
-  margin-bottom: 1rem;
   gap: 0.7rem;
   border-radius: 0.7rem;
   width: 100%;
@@ -16,14 +17,19 @@
   display: flex;
   flex-direction: row;
   gap: 0.6rem;
+  width: 100%;
 }
 .form .formContainer input {
   all: unset;
-  color: white;
+  color: #081028;
   border: none;
-  background-color: #cb3cff;
+  background-color: #9a91fb;
   border-bottom: 1px solid #aeb9e1;
-  padding: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.7rem;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
 .form .formContainer input:focus {
   border: none;
@@ -31,7 +37,7 @@
 .form button {
   all: unset;
   background: #080f25;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 3rem;
   border-radius: 0.7rem;
   cursor: pointer;
 }/*# sourceMappingURL=AddAsset.module.css.map */

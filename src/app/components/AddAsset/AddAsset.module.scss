@@ -3,10 +3,11 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: start;
   padding: 1rem;
   display: flex;
   background-color: $component;
-  margin-bottom: 1rem;
   gap: 0.7rem;
   border-radius: $radius;
   width: 100%;
@@ -19,14 +20,19 @@
     display: flex;
     flex-direction: row;
     gap: 0.6rem;
+    width: 100%;
 
     input {
       all: unset;
-      color: white;
+      color: $second-bg;
       border: none;
-      background-color: $color1;
+      background-color: $color2;
       border-bottom: 1px solid $text;
-      padding: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: $radius;
+      width: 100%;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
 
       &:focus {
         border: none;
@@ -36,7 +42,7 @@
   button {
     all: unset;
     background: $color-bg;
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 3rem;
     border-radius: $radius;
     cursor: pointer;
   }

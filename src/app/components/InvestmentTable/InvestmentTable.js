@@ -1,10 +1,6 @@
-import { useState } from "react";
 import styles from "./InvestmentTable.module.scss";
 
-export default function InvestmentTable({ investments, currency, onAssetDelete }) {
-  const [isModalOpen, srtIsModalOpen] = useState(false);
-  const [slectedAsset, setSelectedAsset] = useState(null);
-
+export default function InvestmentTable({ investments, currency, onAssetDelete, onAssetEdit }) {
   if (investments.length === 0) {
     return <p>Načítavam dáta...</p>;
   }
@@ -37,10 +33,11 @@ export default function InvestmentTable({ investments, currency, onAssetDelete }
         <table >
           <thead>
             <tr>
-              <th >ASSET NAME</th>
+              <th>ASSET NAME</th>
               <th>QUANTITY</th>
               <th>VALUE IN EUR</th>
               <th>VALUE CZK</th>
+              <th>PRICE</th>
             </tr>
           </thead>
           <tbody>
@@ -50,17 +47,19 @@ export default function InvestmentTable({ investments, currency, onAssetDelete }
                 <td>{inv.amount}</td>
                 <td>{(inv.unitPrice * inv.amount).toFixed(2)} </td>
                 <td>{((inv.unitPrice * inv.amount) * (currency || 1)).toLocaleString("cs-CZ")}</td>
+                <td>{inv.unitPrice}</td>
                 <td>
                   <button onClick={() => deleteAsset(inv.id)}>X</button>
                 </td>
-                <td><button onClick={() => openEditModal(asset)}>⚙</button></td>
+                <td><button onClick={() => onAssetEdit(inv)}>⚙</button></td>
               </tr>
             ))}
           </tbody>
         </table>
-
-
       }
+
+
+
     </div>
   );
 }

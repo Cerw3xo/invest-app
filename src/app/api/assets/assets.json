@@ -2,31 +2,31 @@
   {
     "id": 1,
     "name": "Bitcoin",
-    "amount": 0.0178344,
-    "unitPrice": 98371
+    "amount": "0.0090545",
+    "unitPrice": "89478"
   },
   {
     "id": 2,
     "name": "S&P 500 SXR8",
-    "amount": 5.2263744,
-    "unitPrice": 624
+    "amount": "5.4970742",
+    "unitPrice": "601"
   },
   {
     "id": 3,
     "name": "NASDAQ 100 SXRV ",
-    "amount": 1.31958072,
-    "unitPrice": 1199
+    "amount": "0.336",
+    "unitPrice": "1135"
   },
   {
     "id": 4,
-    "name": "USA Small Cap ZPRV",
-    "amount": 2.792789,
-    "unitPrice": 69
+    "name": "Saving Account",
+    "amount": "800",
+    "unitPrice": "1"
   },
   {
     "id": 5,
-    "name": "Saving Account",
-    "amount": 1000,
-    "unitPrice": 1
+    "name": "MSI USA Small Cap",
+    "amount": 3,
+    "unitPrice": 65
   }
 ]

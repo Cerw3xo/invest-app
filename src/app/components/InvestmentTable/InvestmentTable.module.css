@@ -13,11 +13,11 @@
 }
 .div table thead tr {
   display: table-row;
-  border-bottom: 1px solid #1c365d;
+  border-bottom: 1px solid #7e89ac;
 }
 .div table thead tr th {
   padding: 0.7rem 0;
-  color: #1c365d;
+  color: #aeb9e1;
   font-size: 0.9rem;
 }
 .div table tbody td {

@@ -1,1 +1,1 @@
-{"version":3,"sources":["InvestmentSummary.module.scss","InvestmentSummary.module.css","../../variables.scss"],"names":[],"mappings":"AAEA;EACE,aAAA;EACA,kBAAA;ACDF;ADGE;EACE,eAAA;EACA,qBAAA;ACDJ;ADIE;EACE,iBAAA;EACA,qBAAA;EACA,cEXG;ADSP","file":"InvestmentSummary.module.css"}
+{"version":3,"sources":["InvestmentSummary.module.scss","InvestmentSummary.module.css","../../variables.scss"],"names":[],"mappings":"AAEA;EACE,aAAA;EACA,kBAAA;ACDF;ADGE;EACE,eAAA;EACA,qBAAA;ACDJ;ADIE;EACE,iBAAA;EACA,qBAAA;EACA,cEVG;ADQP","file":"InvestmentSummary.module.css"}

@@ -5,15 +5,15 @@ import InvestmentTable from "./components/InvestmentTable/InvestmentTable";
 import InvestmentSummary from "./components/InvestmentSummary/InvestmentSummary";
 import InvestmentChart from "./components/InvestmentChart/investmentChart";
 import AddAsset from "./components/AddAsset/AddAsset";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 
 
 export default function Home() {
   const [investments, setInvestments] = useState([]);
   const [currency, setCurrency] = useState(1);
-  const [isClient, setIsClient] = useState(false)
+  const [isClient, setIsClient] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedAsset, setSelectedAsset] = useState(null)
 
   useEffect(() => {
     setIsClient(true);
@@ -36,14 +36,27 @@ export default function Home() {
       })
   }, []);
 
-  const handleAsset = (newAsset) => {
-    setInvestments((prev) => [...prev, newAsset])
+
+
+  const handleAsset = (asset) => {
+    if (isEditing) {
+      setInvestments(prev => prev.map(item => item.id === asset.id ? asset : item))
+    } else {
+      setInvestments(prev => [...prev, asset])
+    }
+
+    setIsEditing(false);
+    setSelectedAsset(null);
   }
 
-  const deleteAsset = (newAsset) => {
-    setInvestments(newAsset);
+  const handleDeleteAsset = (asset) => {
+    setInvestments(asset);
   }
 
+  const handleEditAsset = (asset) => {
+    setSelectedAsset(asset);
+    setIsEditing(true);
+  }
 
   if (!isClient) {
     return <p>Načítavam</p>
@@ -51,31 +64,29 @@ export default function Home() {
   return (
 
     <main className="dashboard">
-      <aside className="sidebar">
-        <h2>Invest App</h2>
-        <nav>
-          <ul>
-            <li> <FontAwesomeIcon className="ico-fa" icon={faHouse} /> Dashboard</li>
-          </ul>
-        </nav>
-      </aside>
+
 
       <section className="dashboard-container">
         <h1>Main Dashboard</h1>
 
-        <div className="">
-          <AddAsset onAssetAdded={handleAsset} />
-        </div>
 
         <div className="dashboard-item">
+          <AddAsset onAssetAdded={handleAsset}
+            isEditing={isEditing}
+            selectedAsset={selectedAsset}
+            onCancel={() => { setIsEditing(false); setSelectedAsset(null) }}
+          />
+
           <div className="assets-table">
-            <InvestmentTable investments={investments} currency={currency} onAssetDelete={deleteAsset} />
+            <InvestmentTable investments={investments} currency={currency} onAssetDelete={handleDeleteAsset} onAssetEdit={handleEditAsset} />
           </div>
 
           <div className="graph">
             <InvestmentSummary investments={investments} currency={currency} />
             <InvestmentChart investment={investments} />
           </div>
+
+
         </div>
       </section>
 
