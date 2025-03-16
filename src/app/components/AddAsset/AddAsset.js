@@ -1,23 +1,11 @@
 import { useState, useEffect } from "react";
 import styles from "./AddAsset.module.scss"
 
-export default function AddAsset({ onAssetAdded, isEditing, selectedAsset, onCancel }) {
+export default function AddAsset({ onAssetAdded }) {
 
     const [assetName, setAssetName] = useState("");
     const [assetAmount, setAssetAmount] = useState(0);
     const [assetPrice, setAssetPrice] = useState(0);
-
-    useEffect(() => {
-        if (isEditing && selectedAsset) {
-            setAssetName(selectedAsset.name);
-            setAssetAmount(selectedAsset.amount);
-            setAssetPrice(selectedAsset.unitPrice);
-        } else {
-            setAssetName("");
-            setAssetAmount(0);
-            setAssetPrice(0);
-        }
-    }, [isEditing, selectedAsset])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,19 +18,12 @@ export default function AddAsset({ onAssetAdded, isEditing, selectedAsset, onCan
 
         try {
             let response;
-            if (isEditing) {
-                response = await fetch("/api/assets", {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: selectedAsset.id, ...assetData }),
-                });
-            } else {
-                response = await fetch("/api/assets", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(assetData),
-                });
-            }
+
+            response = await fetch("/api/assets", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(assetData),
+            });
 
             if (!response.ok) {
                 throw new Error("Error for loading data")
@@ -63,7 +44,7 @@ export default function AddAsset({ onAssetAdded, isEditing, selectedAsset, onCan
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2>{isEditing ? "Edit Asset" : "New Asset"}</h2>
+            <h2>New Asset</h2>
 
             <div className={styles.formContainer}>
                 <input
@@ -85,11 +66,7 @@ export default function AddAsset({ onAssetAdded, isEditing, selectedAsset, onCan
 
 
             </div>
-            <button type="submit">{isEditing ? "Save" : "Add"}</button>
-
-            {isEditing && (
-                <button type="button" onClick={onCancel}>cancel</button>
-            )}
+            <button type="submit">Add</button>
         </form>
     )
 

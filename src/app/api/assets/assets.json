@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Bitcoin",
-    "amount": "0.0090545",
+    "amount": "1.0090545",
     "unitPrice": "89478"
   },
   {
@@ -14,19 +14,7 @@
   {
     "id": 3,
     "name": "NASDAQ 100 SXRV ",
-    "amount": "0.336",
+    "amount": "2.336005",
     "unitPrice": "1135"
-  },
-  {
-    "id": 4,
-    "name": "Saving Account",
-    "amount": "800",
-    "unitPrice": "1"
-  },
-  {
-    "id": 5,
-    "name": "MSI USA Small Cap",
-    "amount": 3,
-    "unitPrice": 65
   }
 ]

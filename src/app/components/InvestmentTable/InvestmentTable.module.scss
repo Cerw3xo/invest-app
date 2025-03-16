@@ -35,3 +35,41 @@
     }
   }
 }
+
+.error {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff3333;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ff3333;
+  font-size: 14px;
+  text-align: center;
+}
+
+.deleteButton {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 8px;
+  margin-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cc0000;
+  }
+}
+
+.transactionButton {
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0033cc;
+  }
+}

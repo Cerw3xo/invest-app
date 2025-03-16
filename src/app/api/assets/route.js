@@ -25,7 +25,7 @@ export async function POST(req) {
         await fs.writeFile(filePath, JSON.stringify(updatedAssets, null, 2));
         return NextResponse.json(newAsset);
     } catch (error) {
-        return NextResponse.json({ error: "Assot was not added" })
+        return NextResponse.json({ error: "Asset was not added" })
     }
 
 }

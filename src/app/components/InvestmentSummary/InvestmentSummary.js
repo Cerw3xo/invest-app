@@ -2,7 +2,7 @@ import styles from "./InvestmentSummary.module.scss";
 
 export default function InvestmentSummary({ currency, investments }) {
 
-    if (investments.legth === 0) {
+    if (investments.length === 0) {
         return <p>Načítavam dáta...</p>;
     }
 
